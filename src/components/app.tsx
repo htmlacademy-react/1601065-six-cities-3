@@ -1,11 +1,10 @@
 import {Route, BrowserRouter, Routes} from 'react-router-dom';
 import {AppRoute} from '../const/const.ts';
 import MainScreen from '../pages/main-pages.tsx';
-import FavoriteEmptyScreen from '../pages/favorite-empty-page.tsx';
 import FavoriteScreen from '../pages/favorite-page.tsx';
 import LoginScreen from '../pages/login-page.tsx';
-import MainEmptyScree from '../pages/main-empty-page.tsx';
-import OfferNotLoggedScreen from '../pages/offer-not-logged-page.tsx';
+import OfferScreen from '../pages/offer-page.tsx';
+import Mistake from '../pages/404.tsx';
 
 
 function App(): JSX.Element {
@@ -13,7 +12,7 @@ function App(): JSX.Element {
     <BrowserRouter>
     <Routes>
       <Route
-        path={AppRoute.Root}
+        path={AppRoute.Main}
         element={<MainScreen/>}
       />
       <Route
@@ -25,21 +24,13 @@ function App(): JSX.Element {
         element={<FavoriteScreen />}
       />
       <Route
-        path={AppRoute.FavoriteEmpty}
-        element={<FavoriteEmptyScreen />}
-      />
-      <Route
-        path={AppRoute.MainEmpty}
-        element={<MainEmptyScree />}
-      />
-      <Route
         path={AppRoute.Offer}
-        // element={<OfferScreen />}
+        element={<OfferScreen />}
       />
-      <Route
-        path="*"
-        element={<OfferNotLoggedScreen />}
-      />
+       <Route
+          path="*"
+          element={<Mistake />}
+        />
     </Routes>
   </BrowserRouter>
   );

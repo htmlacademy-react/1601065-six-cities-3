@@ -16,13 +16,10 @@ export const itemNavigation = {
 }
 
 export enum AppRoute {
+  Main = '/',
   Login = '/login-page',
   Favorite = '/favorite-page',
-  FavoriteEmpty = '/favorite-empty',
-  Root = '/',
-  MainEmpty = '/main-empty',
   Offer = '/offer-page',
-  OfferNotLogged = '/offer-not-logged'
 }
 
 export const img = ['img/apartment-01.jpg', 'img/room.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg', 'img/room.jpg']

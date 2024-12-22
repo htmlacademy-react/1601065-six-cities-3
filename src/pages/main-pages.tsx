@@ -2,7 +2,6 @@ import HeaderScreen from "../components/header.tsx";
 import NavigationScreen from "../components/navigation.tsx";
 import HeaderDescriptionScreen from "../components/header-description-components.tsx";
 import SortComponentsScreen from "../components/sort-components.tsx";
-import MapScreen from "../components/map-components.tsx";
 import { Setting, City } from '../const/const.ts'
 
 function MainScreen(): JSX.Element {
