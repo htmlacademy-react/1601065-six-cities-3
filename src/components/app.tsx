@@ -6,7 +6,6 @@ import FavoriteScreen from '../pages/favorite-page.tsx';
 import LoginScreen from '../pages/login-page.tsx';
 import MainEmptyScree from '../pages/main-empty-page.tsx';
 import OfferNotLoggedScreen from '../pages/offer-not-logged-page.tsx';
-// import OfferScreen from '../../pages/offer/offer-page.tsx'
 
 
 function App(): JSX.Element {

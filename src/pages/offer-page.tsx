@@ -1,6 +1,6 @@
 function OfferScreen(): JSX.Element{
   return(
-    // в чем ошибка?
+
     <main className="page__main page__main--offer">
         <section className="offer">
           <div className="offer__gallery-container container">
