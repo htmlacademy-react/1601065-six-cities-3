@@ -8,15 +8,19 @@ import OfferScreen from '../pages/offer-page.tsx';
 import Mistake from '../pages/404.tsx';
 import PrivateRoute from './private-route.tsx';
 
+type AppProps = {
+  apartCount: number;
+  email: string;
+};
 
-function App(): JSX.Element {
+function App({ apartCount, email }: AppProps): JSX.Element {
   return (
     <HelmetProvider>
       <BrowserRouter>
         <Routes>
           <Route
             path={AppRoute.Main}
-            element={<MainScreen/>}
+            element={<MainScreen apartCount={apartCount} email={email} />}
           />
           <Route
             path={AppRoute.Login }

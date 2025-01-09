@@ -2,19 +2,23 @@ import HeaderScreen from "../components/header.tsx";
 import NavigationScreen from "../components/navigation.tsx";
 import HeaderDescriptionScreen from "../components/header-description-components.tsx";
 import SortComponentsScreen from "../components/sort-components.tsx";
-import { Setting, City } from '../const/const.ts'
+import { Setting, CITIES } from '../const/const.ts'
+import { Helmet } from 'react-helmet-async';
 
 function MainScreen(): JSX.Element {
   return(
     <><HeaderScreen apartCount = {Setting.apartCount} email = {Setting.email}/>
     <main className="page__main page__main--index">
+      <Helmet>
+        <title>6 cities</title>
+      </Helmet>
       <h1 className="visually-hidden">Cities</h1>
       <NavigationScreen/>
       <div className="cities">
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <HeaderDescriptionScreen number = {Setting.number} city = {City[3]}/>
+            <HeaderDescriptionScreen number = {Setting.number} city = {CITIES[3]}/>
             <SortComponentsScreen/>
             <div className="cities__places-list places__list tabs__content">
               <article className="cities__card place-card">

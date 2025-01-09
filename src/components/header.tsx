@@ -1,11 +1,11 @@
 import Logo from "./list-item-card/logo";
 
 
-type Header = {
+type HeaderProps = {
   apartCount: number;
   email: string;
 }
-function HeaderScreen({apartCount, email}: Header): JSX.Element {
+function Header({apartCount, email}: HeaderProps): JSX.Element {
   return (
     <header className="header">
         <div className="container">
@@ -35,4 +35,4 @@ function HeaderScreen({apartCount, email}: Header): JSX.Element {
       </header>
   );
 }
-export default HeaderScreen;
+export default Header;

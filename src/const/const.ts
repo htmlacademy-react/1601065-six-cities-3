@@ -2,9 +2,9 @@ export const Setting = {
   apartCount: 3,
   email: 'Oliver.conner@gmail.com',
   number: 312,
-};
+}as const;;
 
-export const City = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf']
+export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf']
 
 export const itemNavigation = {
   itemOne: 'Paris',
@@ -17,9 +17,9 @@ export const itemNavigation = {
 
 export enum AppRoute {
   Main = '/',
-  Login = '/login-page',
-  Favorite = '/favorite-page',
-  Offer = '/offer-page',
+  Login = '/login',
+  Favorite = '/favorite',
+  Offer = '/offer',
 }
 
 export const img = ['img/apartment-01.jpg', 'img/room.jpg', 'img/apartment-02.jpg', 'img/apartment-03.jpg', 'img/room.jpg']

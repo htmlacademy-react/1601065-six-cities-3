@@ -1,6 +1,11 @@
+import { Helmet } from 'react-helmet-async';
+
 function FavoriteEmptyScreen(): JSX.Element {
   return (
     <main className="page__main page__main--favorites page__main--favorites-empty">
+      <Helmet>
+        <title>6 cities: favorites empty</title>
+      </Helmet>
         <div className="page__favorites-container container">
           <section className="favorites favorites--empty">
             <h1 className="visually-hidden">Favorites (empty)</h1>

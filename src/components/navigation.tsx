@@ -1,4 +1,4 @@
-import { City } from "../const/const";
+import { CITIES } from "../const/const";
 
 function NavigationScreen(): JSX.Element {
   return(
@@ -7,32 +7,32 @@ function NavigationScreen(): JSX.Element {
             <ul className="locations__list tabs__list">
               <li className="locations__item">
                 <a className="locations__item-link tabs__item" href="#">
-                  <span>{City[0]}</span>
+                  <span>{CITIES[0]}</span>
                 </a>
               </li>
               <li className="locations__item">
                 <a className="locations__item-link tabs__item" href="#">
-                  <span>{City[1]}</span>
+                  <span>{CITIES[1]}</span>
                 </a>
               </li>
               <li className="locations__item">
                 <a className="locations__item-link tabs__item" href="#">
-                  <span>{City[2]}</span>
+                  <span>{CITIES[2]}</span>
                 </a>
               </li>
               <li className="locations__item">
                 <a className="locations__item-link tabs__item tabs__item--active">
-                  <span>{City[3]}</span>
+                  <span>{CITIES[3]}</span>
                 </a>
               </li>
               <li className="locations__item">
                 <a className="locations__item-link tabs__item" href="#">
-                  <span>{City[5]}</span>
+                  <span>{CITIES[5]}</span>
                 </a>
               </li>
               <li className="locations__item">
                 <a className="locations__item-link tabs__item" href="#">
-                  <span>{City[6]}</span>
+                  <span>{CITIES[6]}</span>
                 </a>
               </li>
             </ul>
