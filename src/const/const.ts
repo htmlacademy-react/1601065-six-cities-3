@@ -2,7 +2,7 @@ export const Setting = {
   apartCount: 3,
   email: 'Oliver.conner@gmail.com',
   number: 312,
-}as const;;
+}
 
 export const CITIES = ['Paris', 'Cologne', 'Brussels', 'Amsterdam', 'Hamburg', 'Dusseldorf']
 

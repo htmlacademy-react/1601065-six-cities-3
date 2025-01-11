@@ -5,9 +5,14 @@ import SortComponentsScreen from "../components/sort-components.tsx";
 import { Setting, CITIES } from '../const/const.ts'
 import { Helmet } from 'react-helmet-async';
 
-function MainScreen(): JSX.Element {
+type MainScreenProps = {
+  apartCount: number;
+  email: string;
+};
+
+function MainScreen({ apartCount, email }: MainScreenProps): JSX.Element {
   return(
-    <><HeaderScreen apartCount = {Setting.apartCount} email = {Setting.email}/>
+    <><HeaderScreen apartCount = { apartCount } email = { email }/>
     <main className="page__main page__main--index">
       <Helmet>
         <title>6 cities</title>
@@ -18,7 +23,7 @@ function MainScreen(): JSX.Element {
         <div className="cities__places-container container">
           <section className="cities__places places">
             <h2 className="visually-hidden">Places</h2>
-            <HeaderDescriptionScreen number = {Setting.number} city = {CITIES[3]}/>
+            <HeaderDescriptionScreen number = { Setting.number } city = { CITIES[3] }/>
             <SortComponentsScreen/>
             <div className="cities__places-list places__list tabs__content">
               <article className="cities__card place-card">
