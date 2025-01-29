@@ -1,9 +1,9 @@
-function Premium():JSX.Element{
-  return(
+function Premium(): JSX.Element {
+  return (
     <div className="place-card__mark">
-        <span>Premium</span>
+      <span>Premium</span>
     </div>
-  )
+  );
 }
 
-export default Premium
+export default Premium;

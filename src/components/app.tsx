@@ -22,32 +22,20 @@ function App({ apartCount, email }: AppProps): JSX.Element {
             path={AppRoute.Main}
             element={<MainScreen apartCount={apartCount} email={email} />}
           />
-          <Route
-            path={AppRoute.Login }
-            element={<LoginScreen />}
-          />
+          <Route path={AppRoute.Login} element={<LoginScreen />} />
           <Route
             path={AppRoute.Favorite}
             element={
-              <PrivateRoute
-                authorizationStatus={AuthorizationStatus.NoAuth}
-              >
+              <PrivateRoute authorizationStatus={AuthorizationStatus.NoAuth}>
                 <FavoriteScreen />
               </PrivateRoute>
             }
           />
-          <Route
-            path={AppRoute.Offer}
-            element={<OfferScreen />}
-          />
-          <Route
-              path="*"
-              element={<Mistake />}
-            />
+          <Route path={AppRoute.Offer} element={<OfferScreen />} />
+          <Route path="*" element={<Mistake />} />
         </Routes>
       </BrowserRouter>
     </HelmetProvider>
-
   );
 }
 export default App;

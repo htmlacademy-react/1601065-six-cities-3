@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов»
 
-* Студент: [Светлана Зубарева](https://up.htmlacademy.ru/react-individual/3/user/1601065).
-* Наставник: [Артём Новоселов](https://htmlacademy.ru/profile/id1195129).
+- Студент: [Светлана Зубарева](https://up.htmlacademy.ru/react-individual/3/user/1601065).
+- Наставник: [Артём Новоселов](https://htmlacademy.ru/profile/id1195129).
 
 ---
 
