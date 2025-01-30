@@ -4,7 +4,7 @@ export const reviews = [
     offerId: '1',
     user: {
       name: 'Алексей Иванов',
-      avatarUrl: 'https://example.com/avatar1.jpg',
+      avatarUrl: '../public/img/avatar.svg',
     },
     rating: 5,
     comment: 'Отличная квартира, чистая и уютная! Хозяин очень доброжелательный.',
@@ -15,7 +15,7 @@ export const reviews = [
     offerId: '2',
     user: {
       name: 'Марина Смирнова',
-      avatarUrl: 'https://example.com/avatar2.jpg',
+      avatarUrl: '../public/img/avatar-angelina.jpg',
     },
     rating: 4,
     comment: 'Апартаменты шикарные, но было шумно по ночам.',
@@ -26,7 +26,7 @@ export const reviews = [
     offerId: '3',
     user: {
       name: 'Игорь Петров',
-      avatarUrl: 'https://example.com/avatar3.jpg',
+      avatarUrl: '../public/img/avatar-max.jpg',
     },
     rating: 5,
     comment: 'Идеальное место для отдыха, пляж рядом, всё супер!',
@@ -37,7 +37,7 @@ export const reviews = [
     offerId: '4',
     user: {
       name: 'Елена Кузнецова',
-      avatarUrl: 'https://example.com/avatar4.jpg',
+      avatarUrl: '/img/avatar.svg',
     },
     rating: 3,
     comment: 'Лофт стильный, но не хватало удобств для длительного проживания.',
