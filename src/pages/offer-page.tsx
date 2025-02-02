@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useMemo, useState } from 'react';
-import CommentForm from '../components/comment-form.tsx';
+import CommentForm from '../components/comment-form';
 
 type Offer = {
   id: string;
@@ -47,22 +47,25 @@ type OfferScreenProps = {
 
 function OfferScreen({ offers, reviews }: OfferScreenProps): JSX.Element {
   const { id } = useParams<{ id: string }>();
-  const offer = useMemo(() => offers.find((item) => item.id === id), [offers]);
-  const offerReviews = useMemo(() => reviews.filter((review) => review.offerId === id), [reviews]);
+  const offer = useMemo(() => offers.find((item) => item.id === id), [offers, id]);
+  const offerReviews = useMemo(() => reviews.filter((review) => review.offerId === id), [reviews, id]);
 
   const [allReviews, setAllReviews] = useState(offerReviews);
 
   const handleCommentSubmit = (newComment: { rating: number; review: string }) => {
+    if (!id) {
+      return;
+    }
     const newReview: Review = {
       id: (allReviews.length + 1).toString(),
-      offerId: id!,
+      offerId: id,
       user: { name: 'New User', avatarUrl: '/img/avatar.svg' },
       rating: newComment.rating,
       date: new Date().toISOString(),
       comment: newComment.review,
     };
 
-    setAllReviews([newReview, ...allReviews]);
+    setAllReviews((prevReviews) => [newReview, ...prevReviews]);
   };
 
   if (!offer) {
@@ -77,8 +80,8 @@ function OfferScreen({ offers, reviews }: OfferScreenProps): JSX.Element {
       <section className="offer">
         <div className="offer__gallery-container container">
           <div className="offer__gallery">
-            {offer.images.slice(0, 6).map((image, index) => (
-              <div className="offer__image-wrapper" key={index}>
+            {offer.images.slice(0, 6).map((image) => (
+              <div className="offer__image-wrapper" key={image}>
                 <img className="offer__image" src={image} alt={offer.title} />
               </div>
             ))}
@@ -107,7 +110,6 @@ function OfferScreen({ offers, reviews }: OfferScreenProps): JSX.Element {
                 </li>
               ))}
             </ul>
-            {}
             <CommentForm onSubmit={handleCommentSubmit} />
           </section>
         </div>
