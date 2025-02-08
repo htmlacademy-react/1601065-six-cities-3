@@ -19,7 +19,7 @@ type OfferCardProps = {
 function OfferCard({ offer, isActive, onMouseEnter, onMouseLeave }: OfferCardProps): JSX.Element {
   return (
     <article
-      className={`place-card ${isActive ? 'place-card--active' : ''}`}
+      className={`cities__card place-card ${isActive ? 'place-card--active' : ''}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
@@ -28,7 +28,7 @@ function OfferCard({ offer, isActive, onMouseEnter, onMouseLeave }: OfferCardPro
           <span>Premium</span>
         </div>
       )}
-      <div className="place-card__image-wrapper">
+      <div className="cities__image-wrapper place-card__image-wrapper">
         <Link to={`/offer/${offer.id}`}>
           <img
             className="place-card__image"
