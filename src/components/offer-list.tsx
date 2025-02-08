@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import OfferCard from './offer-card';
-import { offers } from '../mocks/offers.ts'; // Импортируем моки
+import { offers } from '../mocks/offers.ts';
 
 function OfferList(): JSX.Element {
   const [activeOfferId, setActiveOfferId] = useState<string | null>(null);

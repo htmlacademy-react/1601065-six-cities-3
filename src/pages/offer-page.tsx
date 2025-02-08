@@ -1,7 +1,8 @@
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { useMemo, useState } from 'react';
-import CommentForm from '../components/comment-form';
+import { useState } from 'react';
+import CommentForm from '../components/comment-form.tsx';
+import HeaderScreen from '../components/header.tsx';
 
 type Offer = {
   id: string;
@@ -43,14 +44,16 @@ type Review = {
 type OfferScreenProps = {
   offers: Offer[];
   reviews: Review[];
+  apartCount: number;
+  email: string;
 };
 
-function OfferScreen({ offers, reviews }: OfferScreenProps): JSX.Element {
+function OfferScreen({ offers, reviews, apartCount, email }: OfferScreenProps): JSX.Element {
   const { id } = useParams<{ id: string }>();
-  const offer = useMemo(() => offers.find((item) => item.id === id), [offers, id]);
-  const offerReviews = useMemo(() => reviews.filter((review) => review.offerId === id), [reviews, id]);
+  const offer = offers.find((item) => item.id === (id ?? ''));
+  const offerReviews = reviews.filter((review) => review.offerId === (id ?? ''));
 
-  const [allReviews, setAllReviews] = useState(offerReviews);
+  const [allReviews, setAllReviews] = useState<Review[]>(offerReviews);
 
   const handleCommentSubmit = (newComment: { rating: number; review: string }) => {
     if (!id) {
@@ -73,48 +76,51 @@ function OfferScreen({ offers, reviews }: OfferScreenProps): JSX.Element {
   }
 
   return (
-    <main className="page__main page__main--offer">
-      <Helmet>
-        <title>6 cities: {offer.title}</title>
-      </Helmet>
-      <section className="offer">
-        <div className="offer__gallery-container container">
-          <div className="offer__gallery">
-            {offer.images.slice(0, 6).map((image) => (
-              <div className="offer__image-wrapper" key={image}>
-                <img className="offer__image" src={image} alt={offer.title} />
-              </div>
-            ))}
-          </div>
-        </div>
-        <div className="offer__container container">
-          <h1 className="offer__name">{offer.title}</h1>
-          <p>{offer.description}</p>
-          <section className="offer__reviews reviews">
-            <h2 className="reviews__title">
-              Reviews &middot; <span className="reviews__amount">{allReviews.length}</span>
-            </h2>
-            <ul className="reviews__list">
-              {allReviews.map((review) => (
-                <li className="reviews__item" key={review.id}>
-                  <div className="reviews__user user">
-                    <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                      <img className="reviews__avatar user__avatar" src={review.user.avatarUrl} width="54" height="54" alt={review.user.name} />
-                    </div>
-                    <span className="reviews__user-name">{review.user.name}</span>
-                  </div>
-                  <p className="reviews__text">{review.comment}</p>
-                  <time className="reviews__time" dateTime={review.date}>
-                    {new Date(review.date).toLocaleDateString()}
-                  </time>
-                </li>
+    <>
+      <HeaderScreen apartCount={apartCount} email={email} /> {}
+      <main className="page__main page__main--offer">
+        <Helmet>
+          <title>6 cities: {offer.title}</title>
+        </Helmet>
+        <section className="offer">
+          <div className="offer__gallery-container container">
+            <div className="offer__gallery">
+              {offer.images.slice(0, 6).map((image) => (
+                <div className="offer__image-wrapper" key={image}>
+                  <img className="offer__image" src={image} alt={offer.title} />
+                </div>
               ))}
-            </ul>
-            <CommentForm onSubmit={handleCommentSubmit} />
-          </section>
-        </div>
-      </section>
-    </main>
+            </div>
+          </div>
+          <div className="offer__container container">
+            <h1 className="offer__name">{offer.title}</h1>
+            <p>{offer.description}</p>
+            <section className="offer__reviews reviews">
+              <h2 className="reviews__title">
+                Reviews &middot; <span className="reviews__amount">{allReviews.length}</span>
+              </h2>
+              <ul className="reviews__list">
+                {allReviews.map((review) => (
+                  <li className="reviews__item" key={review.id}>
+                    <div className="reviews__user user">
+                      <div className="reviews__avatar-wrapper user__avatar-wrapper">
+                        <img className="reviews__avatar user__avatar" src={review.user.avatarUrl} width="54" height="54" alt={review.user.name} />
+                      </div>
+                      <span className="reviews__user-name">{review.user.name}</span>
+                    </div>
+                    <p className="reviews__text">{review.comment}</p>
+                    <time className="reviews__time" dateTime={review.date}>
+                      {new Date(review.date).toLocaleDateString()}
+                    </time>
+                  </li>
+                ))}
+              </ul>
+              <CommentForm onSubmit={handleCommentSubmit} />
+            </section>
+          </div>
+        </section>
+      </main>
+    </>
   );
 }
 
