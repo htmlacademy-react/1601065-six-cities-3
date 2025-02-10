@@ -28,7 +28,14 @@ function App(): JSX.Element {
           />
           <Route
             path="/offer/:id"
-            element={<OfferScreen offers={offers} reviews={reviews} />}
+            element={
+              <OfferScreen
+                offers={offers}
+                reviews={reviews}
+                apartCount={offers.length}
+                email="user@example.com"
+              />
+            }
           />
         </Routes>
       </BrowserRouter>

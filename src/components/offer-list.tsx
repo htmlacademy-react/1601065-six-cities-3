@@ -1,8 +1,34 @@
 import { useState } from 'react';
 import OfferCard from './offer-card';
-import { offers } from '../mocks/offers.ts';
 
-function OfferList(): JSX.Element {
+type OfferListProps = {
+  offers: {
+    id: string;
+    city: string;
+    images: string[];
+    title: string;
+    description: string;
+    type: string;
+    bedrooms: number;
+    maxAdults: number;
+    price: number;
+    rating: number;
+    isPremium: boolean;
+    isFavorite: boolean;
+    goods: string[];
+    host: {
+      name: string;
+      avatarUrl: string;
+      isPro: boolean;
+    };
+    location: {
+      latitude: number;
+      longitude: number;
+    };
+  }[];
+};
+
+function OfferList({ offers }: OfferListProps): JSX.Element {
   const [activeOfferId, setActiveOfferId] = useState<string | null>(null);
 
   const handleMouseEnter = (id: string) => {

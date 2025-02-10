@@ -12,9 +12,34 @@ import { CITIES } from '../const/const.ts';
 type MainScreenProps = {
   apartCount: number;
   email: string;
+  offers: {
+    id: string;
+    city: string;
+    images: string[];
+    title: string;
+    description: string;
+    type: string;
+    bedrooms: number;
+    maxAdults: number;
+    price: number;
+    rating: number;
+    isPremium: boolean;
+    isFavorite: boolean;
+    goods: string[];
+    host: {
+      name: string;
+      avatarUrl: string;
+      isPro: boolean;
+    };
+    location: {
+      latitude: number;
+      longitude: number;
+    };
+  }[];
 };
 
-function MainScreen({ apartCount, email }: MainScreenProps): JSX.Element {
+
+function MainScreen({ apartCount, email, offers }: MainScreenProps): JSX.Element {
   const [activeOfferId] = useState<string | null>(null);
   const [selectedCity] = useState<string>(CITIES[0]);
 
@@ -32,9 +57,9 @@ function MainScreen({ apartCount, email }: MainScreenProps): JSX.Element {
             <section className="cities__places places">
               <h2 className="visually-hidden">Places</h2>
               <HeaderDescriptionScreen number={6} city={selectedCity} />
-              {}
               <SortComponentsScreen />
-              <OfferList /> {}
+              {/* Передаем данные предложений в OfferList */}
+              <OfferList offers={offers} />
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
