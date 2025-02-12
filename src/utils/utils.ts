@@ -6,7 +6,7 @@ function classNames(baseClass: string, additionalClasses: ClassNames = {}): stri
   return [
     baseClass,
     ...Object.entries(additionalClasses)
-      .filter(([_, value]) => value)
+      .filter(([, value]) => value)
       .map(([key]) => key),
   ].join(' ');
 }

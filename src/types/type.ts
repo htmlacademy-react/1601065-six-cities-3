@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import { AuthorizationStatus } from "../const/const.ts";
+import { ReactNode } from 'react';
+import { AuthorizationStatus } from '../const/const.ts';
 
 export type Host = {
   name: string;

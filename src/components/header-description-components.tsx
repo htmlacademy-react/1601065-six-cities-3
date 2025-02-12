@@ -1,4 +1,4 @@
-import { HeaderDescription } from "../types/type.ts";
+import { HeaderDescription } from '../types/type.ts';
 
 function HeaderDescriptionScreen({
   number,

@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { Key, useState } from 'react';
+import { useState } from 'react';
 import CommentForm from '../components/comment-form';
 import HeaderScreen from '../components/header';
 import { Review, OfferScreenProps } from '../types/type';
@@ -8,7 +8,7 @@ import { Review, OfferScreenProps } from '../types/type';
 function OfferScreen({ offers, reviews, apartCount, email }: OfferScreenProps): JSX.Element {
   const { id } = useParams<{ id: string }>();
 
-  const offer = offers.find((item) => item.id === id);
+  const offer = offers.find((item) => item.id === id) || null;
   const offerReviews = reviews.filter((review) => review.offerId === id);
   const [allReviews, setAllReviews] = useState<Review[]>(offerReviews);
 
@@ -31,7 +31,7 @@ function OfferScreen({ offers, reviews, apartCount, email }: OfferScreenProps): 
     return <h1 className="offer__not-found">Offer not found</h1>;
   }
 
-  const altText: string = offer.title ? String(offer.title) : 'Default Title';
+  const altText: string = offer.title || 'Default Title';
 
   return (
     <>
@@ -43,15 +43,14 @@ function OfferScreen({ offers, reviews, apartCount, email }: OfferScreenProps): 
         <section className="offer">
           <div className="offer__gallery-container container">
             <div className="offer__gallery">
-              {offer.images.slice(0, 6).map((image: any, index: Key | null | undefined) => (
-                <div className="offer__image-wrapper" key={index}>
+              {offer.images.slice(0, 6).map((image: string) => (
+                <div className="offer__image-wrapper" key={image}> {/* Используйте image как ключ */}
                   <img
                     className="place-card__image"
                     src={image || 'default-image.png'}
                     width="260"
                     height="200"
-                    alt={altText}
-                  />
+                    alt={altText} />
                 </div>
               ))}
             </div>
