@@ -1,25 +1,11 @@
 import { Link } from 'react-router-dom';
-
-type OfferCardProps = {
-  offer: {
-    id: string;
-    images: string[];
-    title: string;
-    type: string;
-    price: number;
-    rating: number;
-    isPremium: boolean;
-    isFavorite: boolean;
-  };
-  isActive: boolean;
-  onMouseEnter: () => void;
-  onMouseLeave: () => void;
-};
+import { OfferCardProps } from '../types/type.ts';
+import classNames from '../utils/utils.ts';
 
 function OfferCard({ offer, isActive, onMouseEnter, onMouseLeave }: OfferCardProps): JSX.Element {
   return (
     <article
-      className={`cities__card place-card ${isActive ? 'place-card--active' : ''}`}
+      className={classNames('cities__card place-card', { 'place-card--active': isActive })}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >

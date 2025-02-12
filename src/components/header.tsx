@@ -1,9 +1,6 @@
 import Logo from './list-item-card/logo';
+import { HeaderProps } from '../types/type.ts';
 
-type HeaderProps = {
-  apartCount: number;
-  email: string;
-};
 function Header({ apartCount, email }: HeaderProps): JSX.Element {
   return (
     <header className="header">

@@ -1,35 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
-import OfferList from '../components/offer-list.tsx';
-
-type Offer = {
-  id: string;
-  city: string;
-  images: string[];
-  title: string;
-  description: string;
-  type: string;
-  bedrooms: number;
-  maxAdults: number;
-  price: number;
-  rating: number;
-  isPremium: boolean;
-  isFavorite: boolean;
-  goods: string[];
-  host: {
-    name: string;
-    avatarUrl: string;
-    isPro: boolean;
-  };
-  location: {
-    latitude: number;
-    longitude: number;
-  };
-};
-
-type FavoriteScreenProps = {
-  offers: Offer[];
-};
+import { Offer, FavoriteScreenProps } from '../types/type';
+import OfferList from '../components/offer-list';
 
 function FavoriteScreen({ offers }: FavoriteScreenProps): JSX.Element {
   const favoriteOffers = offers.filter((offer) => offer.isFavorite);
@@ -62,6 +34,7 @@ function FavoriteScreen({ offers }: FavoriteScreenProps): JSX.Element {
                     </div>
                   </div>
                   <div className="favorites__places">
+                    {}
                     <OfferList offers={cityOffers} />
                   </div>
                 </li>

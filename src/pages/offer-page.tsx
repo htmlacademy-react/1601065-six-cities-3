@@ -1,64 +1,20 @@
 import { useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { useState } from 'react';
-import CommentForm from '../components/comment-form.tsx';
-import HeaderScreen from '../components/header.tsx';
-
-type Offer = {
-  id: string;
-  city: string;
-  images: string[];
-  title: string;
-  description: string;
-  type: string;
-  bedrooms: number;
-  maxAdults: number;
-  price: number;
-  rating: number;
-  isPremium: boolean;
-  isFavorite: boolean;
-  goods: string[];
-  host: {
-    name: string;
-    avatarUrl: string;
-    isPro: boolean;
-  };
-  location: {
-    latitude: number;
-    longitude: number;
-  };
-};
-
-type Review = {
-  id: string;
-  offerId: string;
-  user: {
-    name: string;
-    avatarUrl: string;
-  };
-  rating: number;
-  date: string;
-  comment: string;
-};
-
-type OfferScreenProps = {
-  offers: Offer[];
-  reviews: Review[];
-  apartCount: number;
-  email: string;
-};
+import { Key, useState } from 'react';
+import CommentForm from '../components/comment-form';
+import HeaderScreen from '../components/header';
+import { Review, OfferScreenProps } from '../types/type';
 
 function OfferScreen({ offers, reviews, apartCount, email }: OfferScreenProps): JSX.Element {
   const { id } = useParams<{ id: string }>();
-  const offer = offers.find((item) => item.id === (id ?? ''));
-  const offerReviews = reviews.filter((review) => review.offerId === (id ?? ''));
 
+  const offer = offers.find((item) => item.id === id);
+  const offerReviews = reviews.filter((review) => review.offerId === id);
   const [allReviews, setAllReviews] = useState<Review[]>(offerReviews);
 
   const handleCommentSubmit = (newComment: { rating: number; review: string }) => {
-    if (!id) {
-      return;
-    }
+    if (!id) return;
+
     const newReview: Review = {
       id: (allReviews.length + 1).toString(),
       offerId: id,
@@ -75,9 +31,11 @@ function OfferScreen({ offers, reviews, apartCount, email }: OfferScreenProps): 
     return <h1 className="offer__not-found">Offer not found</h1>;
   }
 
+  const altText: string = offer.title ? String(offer.title) : 'Default Title';
+
   return (
     <>
-      <HeaderScreen apartCount={apartCount} email={email} /> {}
+      <HeaderScreen apartCount={apartCount} email={email} />
       <main className="page__main page__main--offer">
         <Helmet>
           <title>6 cities: {offer.title}</title>
@@ -85,9 +43,15 @@ function OfferScreen({ offers, reviews, apartCount, email }: OfferScreenProps): 
         <section className="offer">
           <div className="offer__gallery-container container">
             <div className="offer__gallery">
-              {offer.images.slice(0, 6).map((image) => (
-                <div className="offer__image-wrapper" key={image}>
-                  <img className="offer__image" src={image} alt={offer.title} />
+              {offer.images.slice(0, 6).map((image: any, index: Key | null | undefined) => (
+                <div className="offer__image-wrapper" key={index}>
+                  <img
+                    className="place-card__image"
+                    src={image || 'default-image.png'}
+                    width="260"
+                    height="200"
+                    alt={altText}
+                  />
                 </div>
               ))}
             </div>
@@ -104,7 +68,13 @@ function OfferScreen({ offers, reviews, apartCount, email }: OfferScreenProps): 
                   <li className="reviews__item" key={review.id}>
                     <div className="reviews__user user">
                       <div className="reviews__avatar-wrapper user__avatar-wrapper">
-                        <img className="reviews__avatar user__avatar" src={review.user.avatarUrl} width="54" height="54" alt={review.user.name} />
+                        <img
+                          className="reviews__avatar user__avatar"
+                          src={review.user.avatarUrl}
+                          width="54"
+                          height="54"
+                          alt={review.user.name}
+                        />
                       </div>
                       <span className="reviews__user-name">{review.user.name}</span>
                     </div>
