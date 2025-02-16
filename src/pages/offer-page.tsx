@@ -13,7 +13,9 @@ function OfferScreen({ offers, reviews, apartCount, email }: OfferScreenProps): 
   const [allReviews, setAllReviews] = useState<Review[]>(offerReviews);
 
   const handleCommentSubmit = (newComment: { rating: number; review: string }) => {
-    if (!id) return;
+    if (!id) {
+      return;
+    }
 
     const newReview: Review = {
       id: (allReviews.length + 1).toString(),
