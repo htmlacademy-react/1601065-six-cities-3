@@ -52,7 +52,8 @@ function OfferScreen({ offers, reviews, apartCount, email }: OfferScreenProps): 
                     src={image || 'default-image.png'}
                     width="260"
                     height="200"
-                    alt={altText} />
+                    alt={altText}
+                  />
                 </div>
               ))}
             </div>
