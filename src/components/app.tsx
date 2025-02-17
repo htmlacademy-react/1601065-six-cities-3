@@ -1,13 +1,14 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { AppRoute } from '../const/const.ts';
-import MainScreen from '../pages/main-pages.tsx';
-import FavoriteScreen from '../pages/favorite-page.tsx';
-import OfferScreen from '../pages/offer-page.tsx';
-import { offers } from '../mocks/offers.ts';
-import { reviews } from '../mocks/reviews.ts';
+import { AppRoute } from '../const/const';
+import MainScreen from '../pages/main-pages';
+import FavoriteScreen from '../pages/favorite-page';
+import OfferScreen from '../pages/offer-page';
+import { offers } from '../mocks/offers';
+import { reviews } from '../mocks/reviews';
 
 function App(): JSX.Element {
+
   return (
     <HelmetProvider>
       <BrowserRouter>

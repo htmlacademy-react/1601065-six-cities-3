@@ -1,7 +1,4 @@
-type HeaderDescription = {
-  number: number;
-  city: string;
-};
+import { HeaderDescription } from '../types/type.ts';
 
 function HeaderDescriptionScreen({
   number,

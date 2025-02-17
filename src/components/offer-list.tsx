@@ -1,31 +1,10 @@
 import { useState } from 'react';
-import OfferCard from './offer-card';
+import OfferCard from './offer-card.tsx';
+import { Offer } from '../types/type.ts';
 
-type OfferListProps = {
-  offers: {
-    id: string;
-    city: string;
-    images: string[];
-    title: string;
-    description: string;
-    type: string;
-    bedrooms: number;
-    maxAdults: number;
-    price: number;
-    rating: number;
-    isPremium: boolean;
-    isFavorite: boolean;
-    goods: string[];
-    host: {
-      name: string;
-      avatarUrl: string;
-      isPro: boolean;
-    };
-    location: {
-      latitude: number;
-      longitude: number;
-    };
-  }[];
+
+export type OfferListProps = {
+  offers: Offer[];
 };
 
 function OfferList({ offers }: OfferListProps): JSX.Element {

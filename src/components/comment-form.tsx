@@ -1,8 +1,6 @@
 import { useState, ChangeEvent, FormEvent, Fragment } from 'react';
-
-type CommentFormProps = {
-  onSubmit: (comment: { rating: number; review: string }) => void;
-};
+import { ratingTitles } from '../const/const.ts';
+import { CommentFormProps } from '../types/type.ts';
 
 function CommentForm({ onSubmit }: CommentFormProps): JSX.Element {
   const [review, setReview] = useState('');
@@ -28,14 +26,6 @@ function CommentForm({ onSubmit }: CommentFormProps): JSX.Element {
       setRating(null);
       setIsSubmitting(false);
     }
-  };
-
-  const ratingTitles: Record<number, string> = {
-    5: 'perfect',
-    4: 'good',
-    3: 'not bad',
-    2: 'badly',
-    1: 'terribly',
   };
 
   return (
