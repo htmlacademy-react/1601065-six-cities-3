@@ -1,49 +1,39 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { useMemo } from 'react';
+import { useEffect } from 'react';
 import 'leaflet/dist/leaflet.css';
-
-type Offer = {
-  id: string;
-  title: string;
-  location: {
-    latitude: number;
-    longitude: number;
-  };
-};
+import L from 'leaflet';
+import { AMSTERDAM_COORDS } from '../const/const.ts'
+import { OfferMap } from '../types/type.ts';
 
 type MapProps = {
-  offers: Offer[];
+  offers: OfferMap[];
 };
 
 const Map = ({ offers }: MapProps) => {
-  const AMSTERDAM_COORDS: [number, number] = [52.3676, 4.9041];
+
+  useEffect(() => {
+
+    const map = L.map('map').setView(AMSTERDAM_COORDS, 12);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+    }).addTo(map);
 
 
-  const mapSettings = useMemo(() => ({
-    center: AMSTERDAM_COORDS,
-    zoom: 12,
-  }), []);
+    offers.forEach(offer => {
+      const marker = L.marker([offer.location.latitude, offer.location.longitude]).addTo(map);
+      marker.bindPopup(offer.title);
+    });
+
+    return () => {
+      map.remove();
+    };
+  }, [offers]);
 
   return (
-    <MapContainer
-      key={JSON.stringify(mapSettings)}
-      center={mapSettings.center}
-      zoom={mapSettings.zoom}
-      className="cities__map"
+    <div
+      id="map"
       style={{ height: '100%', width: '100%' }}
-    >
-      <TileLayer
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      {offers.map((offer) => (
-        <Marker
-          key={offer.id}
-          position={[offer.location.latitude, offer.location.longitude]}
-        >
-          <Popup>{offer.title}</Popup>
-        </Marker>
-      ))}
-    </MapContainer>
+    />
   );
 };
 

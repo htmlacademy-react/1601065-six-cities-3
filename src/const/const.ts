@@ -51,3 +51,5 @@ export const ratingTitles: Record<number, string> = {
   1: 'terribly',
 };
 
+export const AMSTERDAM_COORDS: [number, number] = [52.3676, 4.9041];
+
